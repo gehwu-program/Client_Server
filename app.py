@@ -20,7 +20,11 @@ def send_to_telegram(text):
 def disable_ngrok_warning(response):
     response.headers['ngrok-skip-browser-warning'] = 'true'
     return response
-
+    
+@app.route('/')
+def home():
+    return "OK", 200
+    
 @app.route('/webhook', methods=['POST', 'GET'])
 def webhook():
     # данные приходят в form
