@@ -4,12 +4,12 @@ from flask import Flask, request
 import requests
 import json
 import html
-
+import os
 app = Flask(__name__)
 
-TELEGRAM_TOKEN = '8758305420:AAEVpelPYZWw7_kNNX4rruPbh_Zx9mYcmDU'
-TELEGRAM_CHAT_ID = '1175507076'
-AMO_DOMAIN = 'vladaslamov.amocrm.ru'  # подставьте свой
+TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']          # строго обязательно, упадёт если нет
+TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
+AMO_DOMAIN = os.environ['AMO_DOMAIN']
 
 def send_to_telegram(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
